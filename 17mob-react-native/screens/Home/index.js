@@ -2,6 +2,7 @@ import React, { PureComponent } from "react";
 import { View, Text, Button, SafeAreaView } from "react-native";
 import { FlatList } from "react-navigation";
 
+
 class HomeScreen extends React.Component {
 
     state = {
@@ -24,6 +25,9 @@ class HomeScreen extends React.Component {
             />
         ),
     };
+    componentDidMount() {
+        this.renderSeasons();
+    }
 
     renderSeasons() {
         fetch("http://ergast.com/api/f1.json", {
@@ -45,13 +49,15 @@ class HomeScreen extends React.Component {
     render() {
         return (
             <SafeAreaView>
+                <Text>{this.state.races.length}</Text>
                 <FlatList
                     data={this.state.races}
-                    keyExtractor={item => item.id}
+                    keyExtractor={item => item.season}
                     renderItem={({ item }) => {
+                        console.log('item ', item)
                         return (
-                            <View style={styles.item}>
-                                <Text style={styles.text}>{item.name}</Text>
+                            <View >
+                                <Text>{item.name}</Text>
                             </View>
                         );
                     }}
