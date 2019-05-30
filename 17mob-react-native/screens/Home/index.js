@@ -1,12 +1,14 @@
 import React, { PureComponent } from "react";
 import { View, Text, Button, SafeAreaView } from "react-native";
 import { FlatList } from "react-navigation";
+import SeasonItem from "../../components/SeasonItem/index";
 
 
 class HomeScreen extends React.Component {
 
     state = {
-        races: []
+        seasons: [],
+        clickSeason: null
     }
     static navigationOptions = {
         title: 'Home',
@@ -19,7 +21,7 @@ class HomeScreen extends React.Component {
         },
         headerRight: (
             <Button
-                onPress={() => alert('Foi!!!')}
+                onPress={(teste) => this.alert(teste)}
                 title="Info"
                 color="#fff"
             />
@@ -30,7 +32,7 @@ class HomeScreen extends React.Component {
     }
 
     renderSeasons() {
-        fetch("http://ergast.com/api/f1.json", {
+        fetch("http://ergast.com/api/f1/seasons.json?limit=1000", {
             method: "GET",
             headers: {
                 Accept: "application/json",
@@ -39,37 +41,35 @@ class HomeScreen extends React.Component {
         })
             .then(res => res.json())
             .then(resp => {
-                const races = resp.MRData.RaceTable.Races
+                const seasons = resp.MRData.SeasonTable.Seasons
                 this.setState({
-                    races: races
+                    seasons: seasons
                 })
             });
+    }
+    onCallBack = itemClicado => {
+        console.log('item clicado', itemClicado)
+
+        this.props.navigation.navigate('SeasonScreen', { season: itemClicado })
+
     }
 
     render() {
         return (
             <SafeAreaView>
-                <Text>{this.state.races.length}</Text>
                 <FlatList
-                    data={this.state.races}
+                    data={this.state.seasons}
                     keyExtractor={item => item.season}
                     renderItem={({ item }) => {
-                        console.log('item ', item)
                         return (
-                            <View >
-                                <Text>{item.name}</Text>
-                            </View>
+                            // <Button title={item.season}  onPress={() => this.print(item)}/>
+
+                            <SeasonItem click={this.onCallBack} item={item} />
                         );
                     }}
                 />
             </SafeAreaView>
         );
     }
-
-
 }
-
-
-
-
 export default HomeScreen;
