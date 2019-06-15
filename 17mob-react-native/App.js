@@ -4,6 +4,8 @@ import { createStackNavigator, createAppContainer } from "react-navigation"
 import Seasons from "./components/Seasons/index";
 import HomeScreen from "./screens/Home/index"
 import SeasonScreen from "./screens/SeasonScreen/index"
+import DriversScreen from "./screens/DriversScreen/index"
+import ResultsScreen from "./screens/ResultsScreen/index"
 
 const AppNavigator = createStackNavigator(
 
@@ -13,6 +15,12 @@ const AppNavigator = createStackNavigator(
     },
     SeasonScreen: {
       screen: SeasonScreen,
+    },
+    Drivers: {
+      screen: DriversScreen,
+    },
+    Results: {
+      screen: ResultsScreen,
     }
   }, {
     initialRouteName: 'Home'
