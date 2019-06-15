@@ -2,6 +2,7 @@ import React, { PureComponent } from "react";
 import { View, Text, Button, SafeAreaView } from "react-native";
 import { FlatList } from "react-navigation";
 import SeasonItem from "../../components/SeasonItem/index";
+import styles from "./style";
 
 class HomeScreen extends React.Component {
   state = {
