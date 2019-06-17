@@ -1,4 +1,5 @@
 import React, { PureComponent } from "react";
+import {getResults} from "../../services/ApiServices"
 import {
   View,
   Text,
@@ -38,18 +39,7 @@ class ResultsScreen extends React.Component {
   }
 
   renderDrivers() {
-    fetch(
-      `http://ergast.com/api/f1/${
-        this.state.selectedSeason.season
-      }/results.json`,
-      {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json"
-        }
-      }
-    )
+    getResults(this.state.selectedSeason.season)
       .then(res => res.json())
       .then(resp => {
         const races = resp.MRData.RaceTable.Races;

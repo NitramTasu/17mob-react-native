@@ -1,4 +1,5 @@
 import React, { PureComponent } from "react";
+import {getAllSeasons} from "../../services/ApiServices"
 import {
   View,
   Text,
@@ -34,13 +35,7 @@ class HomeScreen extends React.Component {
   }
 
   renderSeasons() {
-    fetch("http://ergast.com/api/f1/seasons.json?limit=100", {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      }
-    })
+    getAllSeasons()
       .then(res => res.json())
       .then(resp => {
         console.log("entrou aqui");

@@ -2,6 +2,7 @@ import React, { PureComponent } from "react";
 import { View, Text, Button, SafeAreaView,ActivityIndicator } from "react-native";
 import { FlatList } from "react-navigation";
 import DriverItem from "../../components/DriverItem/index"
+import {getDrivers} from '../../services/ApiServices';
 
 class DriversScreen extends React.Component {
   state = {
@@ -32,13 +33,7 @@ class DriversScreen extends React.Component {
   }
 
   renderDrivers() {
-    fetch(`http://ergast.com/api/f1/${this.state.selectedSeason.season}/drivers.json?limit=10`, {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      }
-    })
+    getDrivers(this.state.selectedSeason.season)
       .then(res => res.json())
       .then(resp => {
         const drivers = resp.MRData.DriverTable.Drivers;
