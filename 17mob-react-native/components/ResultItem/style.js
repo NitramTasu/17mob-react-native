@@ -9,30 +9,21 @@ const styles = StyleSheet.create({
     marginTop: 20
   },
   container:{
-    flex:1,
     flexDirection:"column",
-    justifyContent:"center"
+    justifyContent:"center",
+    marginLeft:20
   },
   icon:{
     width:50,
     height:50,
     marginRight:20,
-    marginLeft:20
-  },
-  driverLine:{
-    flexDirection: 'row',
-    alignItems:"center",
-    justifyContent:"flex-start",
-    backgroundColor:"black",
-    borderWidth: 0.5,
-    height:80,
-    borderColor:"red",
-    textAlign: "center"
-
+    marginLeft:20,
+    marginTop:10
   },
   label:{
     color:"red",
     marginBottom:10,
+    marginTop:20,
   },
   resultsButton:{
     flex:1

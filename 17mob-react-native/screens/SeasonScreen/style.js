@@ -18,13 +18,12 @@ const styles = StyleSheet.create({
     marginRight:20,
     marginLeft:20
   },
-  driverLine:{
-    flexDirection: 'row',
+  driverButton:{
     backgroundColor:"black",
     borderWidth: 0.5,
-    height:80,
     borderColor:"red",
-    textAlign: "center"
+    alignItems:"center",
+    justifyContent:"center"
 
   },
   label:{

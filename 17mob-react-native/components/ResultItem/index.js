@@ -8,13 +8,13 @@ class ResultItem extends React.Component {
     let results = []
 
     for(let i = 0; i < 3; i++){
-        results.push(<Text>{this.props.item.Results[i].Driver.familyName}</Text>)
+        results.push(<Text key={i}>{this.props.item.Results[i].Driver.familyName}</Text>)
     }
     return results
   }
 
   render() {
-    return (<View>
+    return (<View style={styles.container}>
                 <Text style={styles.label}>{this.props.item.raceName}</Text>
                {this.renderResult()}
             </View>);
