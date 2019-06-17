@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-import { View, Text, Button, SafeAreaView } from "react-native";
+import { View, Text, Button, SafeAreaView,ActivityIndicator } from "react-native";
 import { FlatList } from "react-navigation";
 import SeasonItem from "../../components/SeasonItem/index";
 import styles from "./style";
@@ -36,6 +36,7 @@ class HomeScreen extends React.Component {
     })
       .then(res => res.json())
       .then(resp => {
+        console.log('entrou aqui')
         const seasons = resp.MRData.SeasonTable.Seasons;
         this.setState({
           seasons: seasons
@@ -56,6 +57,7 @@ class HomeScreen extends React.Component {
             return <SeasonItem click={this.onCallBack} item={item} />;
           }}
         />
+        <ActivityIndicator size="large" color="red" />
       </SafeAreaView>
     );
   }

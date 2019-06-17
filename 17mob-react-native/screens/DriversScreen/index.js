@@ -1,11 +1,12 @@
 import React, { PureComponent } from "react";
-import { View, Text, Button, SafeAreaView } from "react-native";
+import { View, Text, Button, SafeAreaView,ActivityIndicator } from "react-native";
 import { FlatList } from "react-navigation";
 import DriverItem from "../../components/DriverItem/index"
 
 class DriversScreen extends React.Component {
   state = {
-    selectedSeason: "1"
+    selectedSeason: "1",
+    loading: true
   };
   static navigationOptions = props => {
     return {
@@ -43,7 +44,8 @@ class DriversScreen extends React.Component {
         const drivers = resp.MRData.DriverTable.Drivers;
         console.log('drivers', drivers)
         this.setState({
-            drivers: drivers
+            drivers: drivers,
+            loading:false
         });
       });
   }
@@ -59,6 +61,8 @@ class DriversScreen extends React.Component {
             return <DriverItem click={this.onCallBack} item={item} />;
           }}
         />
+        {this.state.loading ? <ActivityIndicator size="large" color="red" />: "not shown"}
+        
       </SafeAreaView>
     );
   }
