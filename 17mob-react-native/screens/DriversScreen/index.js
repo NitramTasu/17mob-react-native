@@ -54,6 +54,9 @@ class DriversScreen extends React.Component {
   render() {
     return (
       <SafeAreaView>
+        {this.state.loading ? (
+          <ActivityIndicator size="large" color="red" />
+        ) : (
         <FlatList
           data={this.state.drivers}
           keyExtractor={(item, index) => index.toString()}
@@ -61,7 +64,7 @@ class DriversScreen extends React.Component {
             return <DriverItem click={this.onCallBack} item={item} />;
           }}
         />
-        {this.state.loading ? <ActivityIndicator size="large" color="red" />: "not shown"}
+        )}
         
       </SafeAreaView>
     );
