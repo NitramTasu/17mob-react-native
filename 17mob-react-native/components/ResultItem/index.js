@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 import { View, Text, Button, SafeAreaView } from "react-native";
-import ResultsScreen from "../../screens/ResultsScreen";
+import styles from "./style"
 
 class ResultItem extends React.Component {
   renderResult= () =>{
@@ -15,7 +15,7 @@ class ResultItem extends React.Component {
 
   render() {
     return (<View>
-                <Text>{this.props.item.raceName}</Text>
+                <Text style={styles.label}>{this.props.item.raceName}</Text>
                {this.renderResult()}
             </View>);
   }

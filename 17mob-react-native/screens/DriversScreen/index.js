@@ -9,25 +9,16 @@ class DriversScreen extends React.Component {
   };
   static navigationOptions = props => {
     return {
-      title: props.navigation.state.params.season,
+      title: "Lista de Pilotos",
       headerStyle: {
-        backgroundColor: "#333"
+        backgroundColor: "red"
       },
       headerTintColor: "#fff",
       headerTitleStyle: {
         fontWeight: "bold"
       },
-      headerRight: (
-        <Button
-          onPress={teste => this.alert(teste)}
-          title="Info"
-          color="#fff"
-        />
-      )
     };
   };
-
-  static navigationOptions = props => {};
   
   componentWillMount(){
     this.setState({
@@ -63,7 +54,7 @@ class DriversScreen extends React.Component {
       <SafeAreaView>
         <FlatList
           data={this.state.drivers}
-          keyExtractor={item => item.driver}
+          keyExtractor={(item, index) => index.toString()}
           renderItem={({ item }) => {
             return <DriverItem click={this.onCallBack} item={item} />;
           }}

@@ -1,55 +1,74 @@
 import React, { PureComponent } from "react";
-import { View, Text, Button } from "react-native";
+import { View, Text, Button, TouchableOpacity, Image } from "react-native";
+import styles from "./style";
 
 class SeasonScreen extends React.Component {
   state = {
     selectedSeason: "1"
   };
-  static navigationOptions = props => {
+  static navigationOptions = ({ navigation }) => {
     return {
-      title: props.navigation.state.params.season,
+      title: `Temporada`,
       headerStyle: {
-        backgroundColor: "#333"
+        backgroundColor: "red"
       },
       headerTintColor: "#fff",
       headerTitleStyle: {
         fontWeight: "bold"
-      },
-      headerRight: (
-        <Button
-          onPress={teste => this.alert(teste)}
-          title="Info"
-          color="#fff"
-        />
-      )
+      }
+      // headerRight: (
+      //   <Button
+      //     onPress={teste => this.alert(teste)}
+      //     title="Info"
+      //     color="#fff"
+      //   />
+      // )
     };
   };
 
-  static navigationOptions = props => {};
-  
-
   componentDidMount() {
-    console.log('test', this.props.navigation)
+    console.log("test", this.props.navigation);
     this.setState({
       selectedSeason: this.props.navigation.getParam("season")
     });
   }
 
   goToDrivers = () => {
-    this.props.navigation.navigate("Drivers", { season: this.state.selectedSeason });
-  }
-  
-  goToResults = () =>{
-    this.props.navigation.navigate("Results", { season: this.state.selectedSeason });  
-  }
+    this.props.navigation.navigate("Drivers", {
+      season: this.state.selectedSeason
+    });
+  };
+
+  goToResults = () => {
+    this.props.navigation.navigate("Results", {
+      season: this.state.selectedSeason
+    });
+  };
 
   render() {
     return (
-      <View>
-        <Text>Teste aqui{this.state.selectedSeason.season}</Text>
-
-        <Button onPress={this.goToDrivers} title="Pilotos"/>
-        <Button onPress={this.goToResults} title="Resultado das Corridas"/>
+      <View style={styles.container}>
+        <Text style={styles.title}>{this.state.selectedSeason.season}</Text>
+        <TouchableOpacity
+          style={styles.driverButton}
+          onPress={this.goToDrivers}
+        >
+          <Image
+            style={styles.icon}
+            source={require("../../assets/f1-helmet.png")}
+          />
+          <Text style={styles.label}> Pilotos</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.driverButton}
+          onPress={this.goToResults}
+        >
+          <Image
+            style={styles.icon}
+            source={require("../../assets/f1-track.png")}
+          />
+          <Text style={styles.label}>Resultado das Corridas</Text>
+        </TouchableOpacity>
       </View>
     );
   }

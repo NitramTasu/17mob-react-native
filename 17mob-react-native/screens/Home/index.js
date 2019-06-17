@@ -10,17 +10,17 @@ class HomeScreen extends React.Component {
     clickSeason: null
   };
   static navigationOptions = {
-    title: "Home",
+    title: "Temporadas",
     headerStyle: {
-      backgroundColor: "#333"
+      backgroundColor: "red"
     },
     headerTintColor: "#fff",
     headerTitleStyle: {
       fontWeight: "bold"
     },
-    headerRight: (
-      <Button onPress={teste => this.alert(teste)} title="Info" color="#fff" />
-    )
+    // headerRight: (
+    //   <Button onPress={teste => this.alert(teste)} title="Info" color="#fff" />
+    // )
   };
   componentDidMount() {
     this.renderSeasons();
@@ -43,8 +43,6 @@ class HomeScreen extends React.Component {
       });
   }
   onCallBack = itemClicado => {
-    console.log("item clicado", itemClicado);
-
     this.props.navigation.navigate("SeasonScreen", { season: itemClicado });
   };
 

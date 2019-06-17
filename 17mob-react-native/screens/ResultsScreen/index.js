@@ -11,7 +11,7 @@ class ResultsScreen extends React.Component {
     return {
       title: props.navigation.state.params.season,
       headerStyle: {
-        backgroundColor: "#333"
+        backgroundColor: "#ff4d4d"
       },
       headerTintColor: "#fff",
       headerTitleStyle: {
