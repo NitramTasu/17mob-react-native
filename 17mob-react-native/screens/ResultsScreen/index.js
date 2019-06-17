@@ -9,25 +9,16 @@ class ResultsScreen extends React.Component {
   };
   static navigationOptions = props => {
     return {
-      title: props.navigation.state.params.season,
+      title: "Corridas e Colocações",
       headerStyle: {
-        backgroundColor: "#ff4d4d"
+        backgroundColor: "red"
       },
       headerTintColor: "#fff",
       headerTitleStyle: {
         fontWeight: "bold"
       },
-      headerRight: (
-        <Button
-          onPress={teste => this.alert(teste)}
-          title="Info"
-          color="#fff"
-        />
-      )
     };
   };
-
-  static navigationOptions = props => {};
   
   componentWillMount(){
     this.setState({
